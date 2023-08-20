@@ -1,0 +1,17 @@
+name: 'Add reviewer to the PR'
+description: 'Adds reviewers to the PR'
+inputs:
+  reviewers:  
+    description: 'Comma separated reviewers Id(s)'
+    required: true
+    default: 'World'
+  token:
+    description: "Github access token"
+    required: true
+  debugMode:
+    description: "Prints logs when debug-mode is set to true"
+    required: false
+    default: false
+runs:
+  using: 'node16'
+  main: 'dist/index.js'
