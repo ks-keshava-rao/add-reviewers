@@ -9814,9 +9814,9 @@ async function addReviewersToPr(){
     try{
     const reviewers = core.getInput("reviewers").split(",");
     const token = core.getInput("token");
-    const prAuthor = github.context.payload.user.login;
-    const context = github.context;
     const client = new github.getOctokit(token);
+    const context = github.context;
+    const prAuthor = context.payload.user.login;
     const finalReviewers = reviewers.filter(reviewer=> reviewer!=prAuthor);
     const debugMode = (core.getInput('debugMode')==true);
     console.log(finalReviewers);
