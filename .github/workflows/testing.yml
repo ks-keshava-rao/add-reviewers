@@ -1,0 +1,23 @@
+name: Send notification on open PR
+on: 
+    pull_request:
+        types: [opened, reopened, labeled]
+    label:
+        types: [created, edited]
+jobs:
+    sendmsg-on-every-pull-request:
+        # if: contains(github.event.pull_request.labels.*.name,'Open-for-review') && !contains(github.event.pull_request.labels.*.name,'Closed-for-review')
+        runs-on : ubuntu-latest
+        timeout-minutes: 1
+        steps :
+            - name: Check out code
+              uses: actions/checkout@v2
+            - name: show context
+              run: echo '${{toJson(github)}}'
+            - name: Assign reviewers
+              uses: ./
+              with:
+                 reviewers: ks-keshava-rao,balajee-r,SimranBhogal10,SrinivasMummidi
+                 token: "${{ secrets.GITHUB_TOKEN }}"
+                 debugMode: true
+              id: assign_reviewers
