@@ -1,13 +1,16 @@
 const core = require("@actions/core");
 const github = require("@actions/github");
-
+const { Octokit } = require("@octokit/rest");
 async function addReviewersToPr(){
     try{
     const reviewers = core.getInput("reviewers").split(",");
     const token = core.getInput("token");
-    const client = new github.getOctokit(token);
+    core.info(`token is ::: ${token}`);
+    const client = new Octokit({auth: token});
     const context = github.context;
+    core.info(`context::${context}`)
     const prAuthor = context.payload.user.login;
+    core.info("prauth "+prAuthor)
     const finalReviewers = reviewers.filter(reviewer=> reviewer!=prAuthor);
     const debugMode = (core.getInput('debugMode')==true);
     console.log(finalReviewers);
