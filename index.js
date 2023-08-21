@@ -11,9 +11,9 @@ async function addReviewersToPr(){
     const prAuthor = context.actor;
     core.info("prauth "+prAuthor)
     const debugMode = (core.getInput('debugMode')==true);
-    const owner = context.repository_owner;
-    const repo = context.event.pull_request.base.repo.name;
-    const pull_number = context.event.pull_request.number;
+    const owner = context.payload.repository.owner.login ;
+    const repo = context.payload.pull_request.base.repo.name;
+    const pull_number = context.payload.pull_request.number;
     const finalReviewers = reviewers.filter(reviewer=> reviewer!=prAuthor);
     console.log(finalReviewers);
     
