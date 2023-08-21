@@ -9830,7 +9830,7 @@ async function addReviewersToPr(){
         reviewers : finalReviewers
      }
      
-    await client.pulls.requestReviewers(parameters);
+    await client.rest.pulls.requestReviewers(parameters);
     }
     catch(e){
         core.setFailed(e.message);
