@@ -14,7 +14,9 @@ async function addReviewersToPr(){
     const pull_number = context.payload.pull_request.number;
     const finalReviewers = reviewers.filter(reviewer=> reviewer!=prAuthor);
     console.log(finalReviewers);
-    
+
+    if(context.payload.action!="labeled") throw `Only labeled action supported , ${context.payload.action || github.context.eventName} is not supported`;
+
     if(debugMode){
         core.info(`Final reviewers :::${finalReviewers}`);
         core.info(`context::${JSON.stringify(context)}`)
