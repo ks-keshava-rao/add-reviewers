@@ -1,9 +1,8 @@
 name: Send notification on open PR
 on: 
     pull_request:
-        types: [opened, reopened, labeled]
-    label:
-        types: [created, edited]
+        types:
+          - labeled
 jobs:
     sendmsg-on-every-pull-request:
         if: contains(github.event.pull_request.labels.*.name,'Open-for-review') && !contains(github.event.pull_request.labels.*.name,'Closed-for-review')
