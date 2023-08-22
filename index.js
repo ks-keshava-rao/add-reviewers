@@ -7,9 +7,7 @@ async function addReviewersToPr(){
     const token = core.getInput("token");
     const client = new Octokit({auth: token});
     const context = github.context;
-    core.info(`context::${JSON.stringify(context)}`)
     const prAuthor = context.actor;
-    core.info("prauth "+prAuthor)
     const debugMode = (core.getInput('debugMode')==true);
     const owner = context.payload.repository.owner.login ;
     const repo = context.payload.pull_request.base.repo.name;
@@ -19,6 +17,7 @@ async function addReviewersToPr(){
     
     if(debugMode){
         core.info(`Final reviewers :::${finalReviewers}`);
+        core.info(`context::${JSON.stringify(context)}`)
     }
     const parameters = {
         owner  ,
