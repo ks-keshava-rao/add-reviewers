@@ -17,7 +17,7 @@ jobs:
             - name: Assign reviewers
               uses: ./
               with:
-                 reviewers: ks-keshava-rao,Malankar
+                 reviewers: ks-keshava-rao,Malankar,RobinJesba
                  token: "${{ secrets.GITHUB_TOKEN }}"
                  debugMode: true
               id: assign_reviewers
