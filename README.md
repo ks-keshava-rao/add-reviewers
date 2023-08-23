@@ -30,10 +30,10 @@ jobs:
 ## Inputs
 
 | Name | Description | Example | Required |
-| --- | --- | --- |
-| `token` | Automatically generated and repo scoped token | ${{ secrets.GITHUB_TOKEN }} | Yes 
-| `reviewers` | Reveiwers github id(s) separated by comma | user1,user2,user3 | Yes 
-| `debugMode` | Print the logs for development purpose| `true` or `false` |  No 
+| --- | --- | --- | --- |
+| `token` | Automatically generated and repo scoped token | ${{ secrets.GITHUB_TOKEN }} | Yes |
+| `reviewers` | Reviewers' GitHub ID(s) separated by commas | user1,user2,user3 | Yes |
+| `debugMode` | Print the logs for development purposes | `true` or `false` | No |
 
 ### Action Result
 The action will fail the workflow in case the username of the reviewer(s) are invalid or incorrect 
