@@ -10,7 +10,7 @@ async function addReviewersToPr(){
 
     if(context.payload.action!="labeled") throw `Only labeled action supported , ${context.payload.action || github.context.eventName} is not supported`;
 
-    const prAuthor = context.actor;
+    const prAuthor = context.payload.pull_request.user.login;
     const debugMode = (core.getInput('debugMode')==true);
     const owner = context.payload.repository.owner.login ;
     const repo = context.payload.pull_request.base.repo.name;
