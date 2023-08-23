@@ -17,7 +17,7 @@ async function addReviewersToPr(){
     const pull_number = context.payload.pull_request.number;
     const finalReviewers = reviewers.filter(reviewer=> reviewer!=prAuthor);
     console.log(finalReviewers);
-
+    console.log(`context::${context}`);
     if(debugMode){
         core.info(`Final reviewers :::${finalReviewers}`);
         core.info(`context::${JSON.stringify(context)}`)
@@ -28,7 +28,7 @@ async function addReviewersToPr(){
         pull_number,
         reviewers : finalReviewers
      }
-     
+
     await client.rest.pulls.requestReviewers(parameters);
     }
     catch(e){
