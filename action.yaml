@@ -1,5 +1,8 @@
 name: 'Add reviewer to the PR'
 description: 'Adds reviewers to the PR'
+branding:
+  icon: "check-circle"
+  color: "purple"
 inputs:
   reviewers:  
     description: 'Comma separated reviewers Id(s)'
